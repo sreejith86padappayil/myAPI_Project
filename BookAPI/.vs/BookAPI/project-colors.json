@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "dc1eadc4-ed60-4194-8228-111649c244f7": {
+      "ProjectGuid": "dc1eadc4-ed60-4194-8228-111649c244f7",
+      "DisplayName": "BookAPI",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "MBoiftsvSxHjs5dYJ94ow2Izvrq1HLzB9/tGoPDe+Ocq35E7MGA2zk0uBFllVwpFg7ZpSaFlPYkDO3Dm5ajRbw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\dell\\source\\repos\\BookAPI\\BookAPI\\BookAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dell\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
