@@ -3,6 +3,9 @@
 
     using System.ComponentModel.DataAnnotations;
 
+    /// <summary>
+    /// Book Catalog model
+    /// </summary>
     public class BookCatalog
     {
         /// <summary>

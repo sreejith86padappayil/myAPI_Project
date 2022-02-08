@@ -1,0 +1,5 @@
+C:\Users\dell\source\repos\BookAPI\BookAPI\obj\Debug\net48\BookAPI.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\BookAPI\BookAPI\obj\Debug\net48\BookAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\BookAPI\BookAPI\obj\Debug\net48\BookAPI.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\BookAPI\BookAPI\obj\Debug\net48\BookAPI.AssemblyInfo.cs
+C:\Users\dell\source\repos\BookAPI\BookAPI\obj\Debug\net48\BookAPI.csproj.CoreCompileInputs.cache

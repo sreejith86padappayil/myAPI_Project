@@ -1,15 +1,37 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BookAPI;
+using System.Net;
+using System.Net.Http;
 
 namespace BookAPI.Controllers
 {
-    [Route("api/[controller]")]
+    /// <summary>
+    /// Book API Controller
+    /// </summary>
+    [Route("api/BookAPI")]
     [ApiController]
     public class BookAPIController : ControllerBase
     {
+        /// <summary>
+        /// Book Catalog Service Repository
+        /// </summary>
         private ICatalogRepository _bookService;
 
+        /// <summary>
+        /// String to hold the custom message
+        /// </summary>
+        private string status_message = string.Empty;
+
+        /// <summary>
+        /// To maintain the Status code of CRUD operations
+        /// </summary>
+        private int status_code;
+
+        /// <summary>
+        /// Public constructor
+        /// </summary>
+        /// <param name="bookService">Book Catalog Service</param>
         public BookAPIController(ICatalogRepository bookService)
         {
             _bookService = bookService;
@@ -20,10 +42,28 @@ namespace BookAPI.Controllers
         /// </summary>
         /// <returns>List of book catalogs</returns>
         [HttpGet]
-        public IActionResult ReadAll()
+        public IActionResult Get()
         {
             var books = _bookService.GetAllBooks();
-            return Ok(books);
+            
+            if (books != null && books.Count() > 0)
+            {
+                status_message = "200 - Ok !!! Able to fetch book details successfully !!!";
+                status_code = 200;
+            }
+            else
+            {
+                status_message = "400 Bad Request - Failed to fetch book details !!!";
+                status_code = 400;
+            }
+
+            var response = new CreatedAtActionResult("Get-Complete Objects", "BookAPI", "", new
+            {
+                message = status_message,
+                currentDate = DateTime.Now,
+                StatusCode = status_code
+            });
+            return response;
         }
 
         /// <summary>
@@ -41,12 +81,22 @@ namespace BookAPI.Controllers
             var result = _bookService.AddBook(_title, _author, _co_author, _ISBN, _publishedDate);
             if (result == true)
             {
-                return Ok(result);
+                status_message = String.Format("200 - Ok !!! Book - {0} with ISBN {1} added successfully !!!", _title, _ISBN);
+                status_code = 200;
             }
             else
             {
-                return NotFound();
+                status_message = String.Format("400 Bad Request - Failed to add the Book - {0} with ISBN {1} !!!", _title, _ISBN);
+                status_code = 400;
             }
+
+            var response = new CreatedAtActionResult("Add", "BookAPI", "", new
+            {
+                message = status_message,
+                currentDate = DateTime.Now,
+                StatusCode = status_code
+            });
+            return response;
         }
 
         /// <summary>
@@ -64,12 +114,22 @@ namespace BookAPI.Controllers
             var update_status = _bookService.UpdateBook(_title, _author, _co_author, _ISBN, _publishedDate);
             if (update_status == true)
             {
-                return Ok(update_status);
+                status_message = String.Format("200 - Ok !!! Book with ISBN {0} updated successfully !!!", _ISBN);
+                status_code = 200;
             }
             else
             {
-                return NotFound();
+                status_message = String.Format("400 Bad Request - Failed to update the book ( ISBN - {0} ) !!!", _ISBN);
+                status_code = 400;
             }
+
+            var response = new CreatedAtActionResult("Update", "BookAPI", "", new
+            {
+                message = status_message,
+                currentDate = DateTime.Now,
+                StatusCode = status_code
+            });
+            return response;
         }
 
         /// <summary>
@@ -83,12 +143,21 @@ namespace BookAPI.Controllers
             var delete_status = _bookService.DeleteBook(_ISBN);
             if (delete_status == true)
             {
-                return Ok(delete_status);
+                status_message = String.Format("200 - Ok !!! Book with ISBN {0} deleted successfully !!!", _ISBN);
+                status_code = 200;
             }
             else
             {
-                return NotFound();
+                status_message = String.Format("400 Bad Request - Failed to delete the book ( ISBN - {0} ) !!!", _ISBN);
+                status_code = 400;
             }
+            var response = new CreatedAtActionResult("Delete", "BookAPI", "", new
+            {
+                message = status_message,
+                currentDate = DateTime.Now,
+                StatusCode = status_code
+            });
+            return response;
         }
 
         /// <summary>
@@ -102,7 +171,25 @@ namespace BookAPI.Controllers
         public IActionResult Get(string _title, string _author, string _ISBN)
         {
             var books = _bookService.SearchBooks(_title, _author, _ISBN);
-            return Ok(books);
+
+            if (books != null && books.Count() > 0)
+            {
+                status_message = String.Format("200 - Ok !!! Book with ISBN {0} able to find successfully !!!", _ISBN);
+                status_code = 200;
+            }
+            else
+            {
+                status_message = String.Format("400 Bad Request - Failed to find any matches for ISBN - {0} !!!", _ISBN);
+                status_code = 400;
+            }
+
+            var response = new CreatedAtActionResult("Get", "BookAPI", "", new
+            {
+                message = status_message,
+                currentDate = DateTime.Now,
+                StatusCode = status_code
+            });
+            return response;
         }
     }
 }
